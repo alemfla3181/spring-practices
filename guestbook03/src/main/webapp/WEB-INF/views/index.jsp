@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 pageContext.setAttribute("newLine", "\n");
+pageContext.setAttribute("newSpace", " ");
 %>
 <html>
 <head>
@@ -41,7 +42,7 @@ pageContext.setAttribute("newLine", "\n");
 				href="${pageContext.request.contextPath}/delete/${vo.no}">삭제</a></td>
 		</tr>
 		<tr>
-			<td colspan=4>${fn: replace(fn: replace(vo.message, newLine, "<br />"), ' ', '&nbsp;')}</td>
+			<td colspan=4>${fn:replace(fn:replace(vo.message, newSpace, '&nbsp;'), newLine, '<br />')}</td>
 		</tr>
 	</table>
 	<br />
