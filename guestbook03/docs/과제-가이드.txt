@@ -1,0 +1,22 @@
+com.douzone.guestbook.controller
+com.douzone.guestbook.repository
+com.douzone.guestbook.vo
+
+
+1) index
+GET /guestbook 				: 리스트출력
+index.jsp
+
+2) delete(@PathVariable("no") Long no)
+GET /guestbook03/delete/10 	: 삭제폼
+delete.jsp로 포워딩
+
+3) delete(
+	@PathVariable("no") Long no, 
+	@RequestParam(value="password", required=true, defaultValue="") String password)
+POST /guestbook03/delete/10 	: 삭제
+redirect:/
+
+4) index(GuestbookVo vo)
+POST /guestbook	 			: 입력
+redirect:/
