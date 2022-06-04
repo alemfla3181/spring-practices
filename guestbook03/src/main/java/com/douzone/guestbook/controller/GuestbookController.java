@@ -25,6 +25,12 @@ public class GuestbookController {
 		model.addAttribute("list", list);
 		return "/WEB-INF/views/index.jsp";
 	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String add(guestbookVo vo) {
+		guestbookRepository.insert(vo);
+		return "redirect:/";
+	}
 
 	@RequestMapping(value = "/delete/{no}", method = RequestMethod.GET)
 	public String form(@PathVariable("no") Long no) {
@@ -35,12 +41,6 @@ public class GuestbookController {
 	public String form(@PathVariable("no") Long no,
 			@RequestParam(value = "password", required = true, defaultValue = "") String password) {
 		guestbookRepository.delete(no, password);
-		return "redirect:/";
-	}
-
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(guestbookVo vo) {
-		guestbookRepository.insert(vo);
 		return "redirect:/";
 	}
 
