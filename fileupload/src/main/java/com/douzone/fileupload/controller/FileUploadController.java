@@ -24,7 +24,8 @@ public class FileUploadController {
 	public String upload(
 			@RequestParam(value = "email", required = true, defaultValue = "") String email,
 			@RequestParam("file") MultipartFile multipartFile, Model model) {
-		String url = fileUploadService.resotre(multipartFile);
+		System.out.println("email: " + email);
+		String url = fileUploadService.restore(multipartFile);
 		model.addAttribute("url", url);
 		return "/WEB-INF/views/result.jsp";
 	}
