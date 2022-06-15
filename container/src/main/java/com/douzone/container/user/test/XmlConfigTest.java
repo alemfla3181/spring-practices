@@ -13,42 +13,19 @@ public class XmlConfigTest {
 
 	public static void main(String[] args) {
 		// XML Auto Configuration(Annotation Scannig)
-//		testBeanFactory01();
+		testBeanFactory01();
 
 		// XML Bean Configuration(Explicit Configuration)
-//		testBeanFactory02();
+		// testBeanFactory02();
 
+		// ==============================================================
 		// XML Auto Configuration(Annotation Scannig)
-//		testApplicationContext01();
+		// testApplicationContext01();
 
 		// XML Bean Configuration(Explicit Configuration)
-		testApplicationContext02();
-	}
+		// testApplicationContext02();
+		// ==============================================================
 
-	// XML Auto Configuration(Annotation Scannig)
-	private static void testBeanFactory01() {
-		BeanFactory bf = new XmlBeanFactory(
-				new ClassPathResource("com/douzone/container/config/user/applicationContext01.xml"));
-
-		User1 user1 = bf.getBean(User1.class);
-		System.out.println(user1.getName());
-
-		// Bean Id가 자동으로 설정됨
-		user1 = (User1) bf.getBean("user1");
-		System.out.println(user1.getName());
-	}
-
-	// XML Bean Configuration(Explicit Configuration)
-	private static void testBeanFactory02() {
-		BeanFactory bf = new XmlBeanFactory(
-				new ClassPathResource("com/douzone/container/config/user/applicationContext02.xml"));
-
-		User1 user1 = bf.getBean(User1.class);
-		System.out.println(user1.getName());
-
-		// Bean Id가 자동으로 설정 안됨
-		user1 = (User1) bf.getBean("user1");
-		System.out.println(user1.getName());
 	}
 
 	// XML Auto Configuration(Annotation Scannig)
@@ -98,13 +75,40 @@ public class XmlConfigTest {
 		// setter를 사용한 빈 가져오기1
 		user = ac.getBean("user5", User.class);
 		System.out.println(user);
-		
+
 		// setter를 사용한 빈 가져오기2 (DI)
 		user = ac.getBean("user6", User.class);
 		System.out.println(user);
-		
+
 		// setter를 사용한 빈 가져오기3 (Collection - List)
 		user = ac.getBean("user7", User.class);
 		System.out.println(user);
 	}
+
+	// XML Auto Configuration(Annotation Scannig)
+	private static void testBeanFactory01() {
+		BeanFactory bf = new XmlBeanFactory(
+				new ClassPathResource("com/douzone/container/config/user/applicationContext01.xml"));
+
+		User1 user1 = bf.getBean(User1.class);
+		System.out.println(user1.getName());
+
+		// Bean Id가 자동으로 설정됨
+		user1 = (User1) bf.getBean("user1");
+		System.out.println(user1.getName());
+	}
+
+	// XML Bean Configuration(Explicit Configuration)
+	private static void testBeanFactory02() {
+		BeanFactory bf = new XmlBeanFactory(
+				new ClassPathResource("com/douzone/container/config/user/applicationContext02.xml"));
+
+		User1 user1 = bf.getBean(User1.class);
+		System.out.println(user1.getName());
+
+		// Bean Id가 자동으로 설정 안됨
+		user1 = (User1) bf.getBean("user1");
+		System.out.println(user1.getName());
+	}
+
 }
